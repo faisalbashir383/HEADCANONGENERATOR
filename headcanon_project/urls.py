@@ -9,6 +9,8 @@ from django.http import HttpResponse
 def robots_txt(request):
     content = """User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 Sitemap: https://headcanongenerator.world/sitemap.xml
 """
     return HttpResponse(content, content_type='text/plain')
