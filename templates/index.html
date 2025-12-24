@@ -1,0 +1,592 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Section 1: Hero + Value Proposition -->
+<section class="hero" id="top">
+    <div class="container">
+        <h1>Headcanon Generator</h1>
+        <p class="hero-subtitle">Create unique, creative headcanons for your favorite characters instantly. Whether
+            you're writing fanfiction, roleplaying, or just having fun with friends, our free headcanon generator helps
+            you explore new dimensions of your beloved characters. Generate wholesome moments, funny quirks, emotional
+            depth, or mysterious backstories with just one click.</p>
+        <p class="hero-desc">Used by writers, artists, and fans worldwide to spark creativity and bring characters to
+            life in unexpected ways. No signup required—just enter a character name and start generating unlimited
+            headcanon ideas for any fandom.</p>
+    </div>
+</section>
+
+<!-- Table of Contents -->
+<nav class="toc-section" aria-label="Page contents">
+    <div class="container">
+        <ul class="toc-list">
+            <li><a href="#generator">🎲 Generator</a></li>
+            <li><a href="#what-is-headcanon">📖 What is Headcanon</a></li>
+            <li><a href="#canon-vs-headcanon">⚖️ Canon vs Headcanon</a></li>
+            <li><a href="#examples">💡 Examples</a></li>
+            <li><a href="#how-it-works">⚙️ How It Works</a></li>
+            <li><a href="#faq">❓ FAQ</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Section 2: Headcanon Generator Tool -->
+<section class="generator-section" id="generator">
+    <div class="container">
+        <div class="generator-card">
+            <h2 class="generator-title">✨ Generate Headcanons</h2>
+            <form id="generator-form" class="generator-form">
+                <div class="form-group">
+                    <label for="character-name">Character Name <span class="required">*</span></label>
+                    <input type="text" id="character-name" name="character"
+                        placeholder="e.g., Harry Potter, Naruto, Sherlock Holmes" required autocomplete="off">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fandom-select">Fandom (Optional)</label>
+                        <select id="fandom-select" name="fandom-select">
+                            <option value="">Select a fandom...</option>
+                            {% for fandom in fandoms %}
+                            <option value="{{ fandom }}">{{ fandom }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fandom-custom">Or Enter Custom Fandom</label>
+                        <input type="text" id="fandom-custom" name="fandom-custom" placeholder="e.g., My Hero Academia">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Choose a Tone</label>
+                    <div class="tone-selector">
+                        {% for tone in tones %}
+                        <label class="tone-option">
+                            <input type="radio" name="tone" value="{{ tone.value }}"
+                                   {% if tone.value == 'random' %}checked{% endif %}>
+                            <span class="tone-card">
+                                <span class="tone-emoji">{{ tone.emoji }}</span>
+                                <span class="tone-label">{{ tone.label }}</span>
+                                <span class="tone-desc">{{ tone.description }}</span>
+                            </span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <button type="submit" class="generate-btn" id="generate-btn">
+                    <span class="btn-text">✨ Generate Headcanons</span>
+                    <span class="btn-loading" style="display: none;">Generating...</span>
+                </button>
+            </form>
+
+            <div id="output-container" class="output-container" style="display: none;">
+                <div class="output-header">
+                    <h3 id="output-title">Headcanons for <span id="character-output"></span></h3>
+                    <div class="output-actions">
+                        <button type="button" class="action-btn copy-btn" id="copy-btn" title="Copy to clipboard">
+                            📋 Copy
+                        </button>
+                        <button type="button" class="action-btn regenerate-btn" id="regenerate-btn"
+                            title="Generate new headcanons">
+                            🔄 Generate Again
+                        </button>
+                    </div>
+                </div>
+                <ul id="headcanon-list" class="headcanon-list"></ul>
+                <p class="share-prompt">💡 Love these headcanons? Share them with your fandom friends!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ad placement after generator -->
+<div class="ad-container" id="ad-after-generator">
+    <!-- AdSense ad will be placed here -->
+</div>
+
+<!-- Section 3: What Is a Headcanon? -->
+<section class="content-section" id="what-is-headcanon">
+    <div class="container">
+        <h2>What Is a Headcanon?</h2>
+        <div class="content-grid">
+            <div class="content-text">
+                <p>A <strong>headcanon</strong> is a fan-created idea, interpretation, or belief about a fictional
+                    character, story, or universe that isn't explicitly stated in the original source material. The term
+                    combines "head" (referring to one's imagination) with "canon" (the official, established facts of a
+                    story). Headcanons live in the space between what creators tell us and what we choose to believe.
+                </p>
+
+                <p>Think of headcanons as the creative extensions fans make to fill in the gaps left by authors,
+                    screenwriters, and game developers. While the original creator might tell us a character loves
+                    coffee, a headcanon might specify that they only drink it black, at exactly 6 AM, while reading the
+                    newspaper—details that feel true to the character even without official confirmation.</p>
+
+                <h3>Why Are Headcanons Important?</h3>
+                <p>Headcanons serve many purposes in fan communities. They allow fans to explore character depth that
+                    source material might not have time to address. Writers use headcanons to inform their fanfiction,
+                    ensuring consistency in how they portray characters. Artists draw inspiration from headcanons to
+                    create meaningful fan art that resonates with other fans who share similar interpretations.</p>
+
+                <p>For many fans, headcanons are a way to see themselves represented in their favorite stories. LGBTQ+
+                    headcanons, neurodivergent headcanons, and cultural headcanons allow fans to connect more deeply
+                    with characters by imagining shared experiences and identities.</p>
+
+                <h3>Examples of Popular Headcanons</h3>
+                <p>Some headcanons become so widely accepted that they feel almost canon. For instance, many Harry
+                    Potter fans headcanon that Hermione has naturally curly hair that she learned to manage over time.
+                    In the Marvel fandom, it's common headcanon that Steve Rogers keeps a list of things to catch up on
+                    from his years frozen. These ideas spread through fan communities, becoming shared understandings
+                    that enrich everyone's experience of the original work.</p>
+
+                <p>Our <strong>headcanon generator</strong> helps you create these personal interpretations for any
+                    character you love. Whether you want wholesome comfort, comedic quirks, angsty backstories, or
+                    emotional depth, you can generate ideas that spark your creativity and help you see familiar
+                    characters in new ways.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Canon vs Headcanon -->
+<section class="content-section alt-bg" id="canon-vs-headcanon">
+    <div class="container">
+        <h2>Canon vs Headcanon: Understanding the Difference</h2>
+        <div class="content-text">
+            <p>Understanding the difference between canon and headcanon is essential for any fan engaging with their
+                favorite stories. While both contribute to how we experience fiction, they come from very different
+                sources and serve different purposes in fan communities.</p>
+
+            <p><strong>Canon</strong> refers to the official, established facts of a fictional universe as determined by
+                its creators. This includes events that happen in the original books, movies, TV shows, games, or any
+                media that the creator or rights holder has officially endorsed. Canon is "real" within the story's
+                universe—it's what actually happened.</p>
+
+            <p><strong>Headcanon</strong>, on the other hand, is personal and interpretive. It's what individual fans
+                believe or imagine about characters and stories, even without official confirmation. Headcanons can
+                coexist with canon, filling in gaps, or they can deliberately diverge from it in "alternate universe"
+                interpretations.</p>
+        </div>
+
+        <div class="comparison-table-wrapper">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Canon</th>
+                        <th>Headcanon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Source</strong></td>
+                        <td>Official creators and media</td>
+                        <td>Fan imagination and interpretation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Authority</strong></td>
+                        <td>Universally accepted as "true"</td>
+                        <td>Personal or community-shared belief</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flexibility</strong></td>
+                        <td>Fixed (until retconned)</td>
+                        <td>Completely flexible and personal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Purpose</strong></td>
+                        <td>Defines the official story</td>
+                        <td>Enriches personal experience</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Community Role</strong></td>
+                        <td>Common reference point</td>
+                        <td>Sparks discussion and creativity</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="content-text">Neither canon nor headcanon is "better"—they serve different purposes. Canon gives us
+            shared stories to discuss, while headcanons allow personal expression and deeper connection. Many of the
+            most beloved fan works come from headcanons that resonated so strongly they became community-wide
+            interpretations.</p>
+    </div>
+</section>
+
+<!-- Ad placement mid-content -->
+<div class="ad-container" id="ad-mid-content">
+    <!-- AdSense ad will be placed here -->
+</div>
+
+<!-- Section 5: Headcanon Examples -->
+<section class="content-section" id="examples">
+    <div class="container">
+        <h2>Headcanon Examples by Category</h2>
+        <p class="section-intro">Looking for inspiration? Browse these headcanon examples organized by media type. These
+            ideas can help spark your own creativity for character development, fanfiction, roleplay, or just for fun!
+        </p>
+
+        <div class="examples-grid">
+            <div class="example-card">
+                <h3>🎌 Anime Headcanon Examples</h3>
+                <ul class="example-list">
+                    <li>The protagonist practices their signature move in front of a mirror every morning</li>
+                    <li>They have a specific comfort food they eat after every battle</li>
+                    <li>Their power-up transformation comes with an embarrassingly catchy internal theme song</li>
+                    <li>They keep a journal of everyone they've met on their journey</li>
+                    <li>The serious character secretly loves cute things but would never admit it</li>
+                    <li>They give names to all their weapons and talk to them when alone</li>
+                    <li>The villain has an extremely mundane hobby they're passionate about</li>
+                </ul>
+            </div>
+
+            <div class="example-card">
+                <h3>📚 Book Character Headcanon Examples</h3>
+                <ul class="example-list">
+                    <li>They annotate their favorite books with personal thoughts and reactions</li>
+                    <li>They have a specific reading spot where they go to escape</li>
+                    <li>They judge people by their bookshelves and reading choices</li>
+                    <li>They quote literature in everyday conversation hoping someone will get the reference</li>
+                    <li>They've re-read their favorite book so many times the spine is held together with tape</li>
+                    <li>They have a "to-read" pile that has become structurally concerning</li>
+                    <li>They form stronger emotional attachments to fictional characters than they'd like to admit</li>
+                </ul>
+            </div>
+
+            <div class="example-card">
+                <h3>🎬 Movie Character Headcanon Examples</h3>
+                <ul class="example-list">
+                    <li>They have a comfort movie they've watched over 50 times</li>
+                    <li>They always stay for post-credits scenes, even for movies that don't have them</li>
+                    <li>They mentally cast everyone they meet in hypothetical films</li>
+                    <li>They have strong opinions about movie remakes and will share them unprompted</li>
+                    <li>They cry at the same movie scene every single time without fail</li>
+                    <li>They quote their favorite films at inappropriate moments</li>
+                    <li>They have a running list of movies to watch that grows faster than they can keep up</li>
+                </ul>
+            </div>
+
+            <div class="example-card">
+                <h3>🎮 Video Game Character Headcanon Examples</h3>
+                <ul class="example-list">
+                    <li>They save obsessively, even when the game auto-saves</li>
+                    <li>They've 100% completed a game and will never stop mentioning it</li>
+                    <li>They name their RPG characters the same thing in every game</li>
+                    <li>They have a specific snack they only eat while gaming</li>
+                    <li>They get emotionally attached to NPCs and feel guilty for quest choices</li>
+                    <li>They've replayed the tutorial of their favorite game just to experience it again</li>
+                    <li>They have gaming superstitions they don't actually believe but follow anyway</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="examples-cta">Want personalized headcanons for your specific character? <a href="#generator">Use our
+                generator above!</a></p>
+    </div>
+</section>
+
+<!-- Section 6: How This Headcanon Generator Works -->
+<section class="content-section alt-bg" id="how-it-works">
+    <div class="container">
+        <h2>How This Headcanon Generator Works</h2>
+        <div class="how-it-works-content">
+            <p>Our headcanon generator uses a carefully crafted system to create unique, engaging character headcanons
+                that feel authentic and meaningful. Here's a transparent look at how the magic happens:</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <h3>Character Input</h3>
+                    <p>You provide a character name and optionally select a fandom. This helps personalize the
+                        headcanons to your specific character, making them feel more relevant and fitting.</p>
+                </div>
+
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <h3>Tone Selection</h3>
+                    <p>Choose from five distinct tones: Wholesome (heartwarming), Funny (quirky and comedic), Dark
+                        (mysterious and angsty), Emotional (deep and meaningful), or Random (a mix of everything).</p>
+                </div>
+
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <h3>Template Matching</h3>
+                    <p>Our system draws from a library of 200+ unique headcanon templates. Each template is crafted to
+                        be fandom-neutral, meaning it works for any character from any universe.</p>
+                </div>
+
+                <div class="step-card">
+                    <span class="step-number">4</span>
+                    <h3>Randomization</h3>
+                    <p>The generator randomly selects 3-5 templates from the chosen tone category, ensuring you get a
+                        fresh, unique combination every time you click generate.</p>
+                </div>
+
+                <div class="step-card">
+                    <span class="step-number">5</span>
+                    <h3>Personalization</h3>
+                    <p>Your character's name is seamlessly integrated into each headcanon, creating outputs that feel
+                        specifically crafted for your chosen character.</p>
+                </div>
+
+                <div class="step-card">
+                    <span class="step-number">6</span>
+                    <h3>Instant Delivery</h3>
+                    <p>Results appear in under 200 milliseconds, allowing you to quickly generate, copy, and generate
+                        again until you find headcanons that perfectly capture your character.</p>
+                </div>
+            </div>
+
+            <div class="transparency-note">
+                <h3>🔒 Privacy & Data</h3>
+                <p>We believe in complete transparency: This generator does not store any data you enter. Your character
+                    names, fandom selections, and generated headcanons are processed in real-time and never saved to any
+                    database. We don't use third-party AI services—all generation happens on our servers using our
+                    proprietary template system.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 7: FAQs -->
+<section class="content-section" id="faq">
+    <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-btn-1">
+                    <span itemprop="name">Is this headcanon generator free forever?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-1" itemscope itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer">
+                    <p itemprop="text">Yes, absolutely! Our headcanon generator is completely free and will remain free
+                        forever. We believe creativity tools should be accessible to everyone. There are no hidden fees,
+                        premium tiers, or limits on how many headcanons you can generate. Use it as much as you want,
+                        whenever you want.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-btn-2">
+                    <span itemprop="name">Can I use these headcanons for my fanfiction?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-2" itemscope itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer">
+                    <p itemprop="text">Absolutely! You're free to use any headcanons generated here for your fanfiction,
+                        roleplay, fan art inspiration, social media posts, or any other creative project. No attribution
+                        required. The headcanons you generate are yours to use however you like.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-btn-3">
+                    <span itemprop="name">Is this an AI-powered headcanon generator?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-3" itemscope itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer">
+                    <p itemprop="text">Our generator uses a carefully curated template system rather than real-time AI
+                        generation. We've crafted over 200 unique headcanon templates that are randomly combined and
+                        personalized with your character's name. This approach ensures fast, consistent, and safe
+                        outputs without the unpredictability of AI systems.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-btn-4">
+                    <span itemprop="name">Is this headcanon generator safe for kids and teens?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-4" itemscope itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer">
+                    <p itemprop="text">Yes! All content generated is appropriate for general audiences. While the "Dark"
+                        tone option includes angsty or mysterious themes, nothing explicit or inappropriate is ever
+                        generated. Our templates are designed to be creative and engaging while remaining
+                        family-friendly.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5" id="faq-btn-5">
+                    <span itemprop="name">Do you store my data or character names?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-5" itemscope itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer">
+                    <p itemprop="text">No, we don't store any personal data. Character names, fandom selections, and
+                        generated headcanons are processed in real-time and immediately discarded. We don't have user
+                        accounts, so there's nothing to track. Your privacy is fully protected.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6" id="faq-btn-6">
+                    <span itemprop="name">Can I generate unlimited headcanons?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-6" itemscope itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer">
+                    <p itemprop="text">Yes! There are no daily limits, generation caps, or cooldowns. Click the generate
+                        button as many times as you want for as many different characters as you like. Our system is
+                        designed to handle high volumes while keeping response times under 200 milliseconds.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7" id="faq-btn-7">
+                    <span itemprop="name">What fandoms does this generator support?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-7" itemscope itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer">
+                    <p itemprop="text">Our generator works with any fandom or original characters! Our templates are
+                        designed to be fandom-neutral, meaning they apply equally well to anime characters, book
+                        protagonists, movie heroes, video game characters, or your own original creations. We offer
+                        category-specific additions for anime, books, movies, and games.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8" id="faq-btn-8">
+                    <span itemprop="name">How can I share headcanons with my fandom friends?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer" id="faq-answer-8" itemscope itemprop="acceptedAnswer"
+                    itemtype="https://schema.org/Answer">
+                    <p itemprop="text">Use the copy button to copy all generated headcanons to your clipboard, then
+                        paste them anywhere—Twitter/X, Tumblr, Discord, fan forums, or group chats. Format them however
+                        you like and share the creativity with your community!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Disclaimer Section -->
+<section class="disclaimer-section">
+    <div class="container">
+        <p class="disclaimer-text">Headcanon Generator is a fan-made creative tool and is not affiliated with or
+            endorsed by any official creators, publishers, or copyright holders. All character names and fandoms
+            referenced are the property of their respective owners.</p>
+    </div>
+</section>
+
+<!-- Ad placement near FAQ -->
+<div class="ad-container" id="ad-near-faq">
+    <!-- AdSense ad will be placed here -->
+</div>
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Is this headcanon generator free forever?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, absolutely! Our headcanon generator is completely free and will remain free forever. We believe creativity tools should be accessible to everyone. There are no hidden fees, premium tiers, or limits on how many headcanons you can generate."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I use these headcanons for my fanfiction?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely! You're free to use any headcanons generated here for your fanfiction, roleplay, fan art inspiration, social media posts, or any other creative project. No attribution required."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is this an AI-powered headcanon generator?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our generator uses a carefully curated template system rather than real-time AI generation. We've crafted over 200 unique headcanon templates that are randomly combined and personalized with your character's name."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is this headcanon generator safe for kids and teens?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! All content generated is appropriate for general audiences. Our templates are designed to be creative and engaging while remaining family-friendly."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Do you store my data or character names?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No, we don't store any personal data. Character names, fandom selections, and generated headcanons are processed in real-time and immediately discarded."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I generate unlimited headcanons?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! There are no daily limits, generation caps, or cooldowns. Click the generate button as many times as you want for as many different characters as you like."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What fandoms does this generator support?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our generator works with any fandom or original characters! Our templates are designed to be fandom-neutral, meaning they apply equally well to anime characters, book protagonists, movie heroes, video game characters, or your own original creations."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How can I share headcanons with my fandom friends?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use the copy button to copy all generated headcanons to your clipboard, then paste them anywhere—Twitter/X, Tumblr, Discord, fan forums, or group chats."
+            }
+        }
+    ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Headcanon Generator",
+    "description": "Free online tool to generate unique headcanons for any character or fandom. Create wholesome, funny, dark, or emotional character interpretations instantly.",
+    "url": "https://headcanongenerator.world",
+    "applicationCategory": "EntertainmentApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    }
+}
+
+
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Headcanon Generator",
+  "alternateName": "Headcanon Generator World",
+  "url": "https://headcanongenerator.world",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Headcanon Generator",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://headcanongenerator.world/static/images/android-chrome-512x512.png"
+    }
+  }
+}
+</script>
+{% endblock %}

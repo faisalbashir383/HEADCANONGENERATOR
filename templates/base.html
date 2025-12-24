@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Headcanon Generator - Free Character Headcanon Ideas{% endblock %}</title>
+    <meta name="description"
+        content="{% block description %}Free Headcanon Generator for any character or fandom. Create unique headcanon ideas for anime, books, movies, and games. Generate unlimited headcanons instantly!{% endblock %}">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Faisal Ahmad">
+    <link rel="canonical" href="https://headcanongenerator.world{% block canonical %}{% endblock %}">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title"
+        content="{% block og_title %}Headcanon Generator - Free Character Headcanon Ideas{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}Create unique headcanons for your favorite characters. Free, instant, unlimited.{% endblock %}">
+    <meta property="og:url" content="https://headcanongenerator.world{% block og_url %}{% endblock %}">
+    <meta property="og:site_name" content="Headcanon Generator">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Headcanon Generator{% endblock %}">
+    <meta name="twitter:description"
+        content="{% block twitter_description %}Create unique headcanons for your favorite characters{% endblock %}">
+
+    <!-- Critical CSS Inline -->
+    <style>
+        :root,
+        [data-theme="light"] {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --bg: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-input: #f1f5f9;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --success: #22c55e;
+            --border: #e2e8f0;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.08)
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f0f1a;
+            --bg-card: #1a1a2e;
+            --bg-input: #252542;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #2e2e4a;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.3)
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px
+        }
+
+        header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px)
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .logo-icon {
+            font-size: 1.8rem
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 24px
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s
+        }
+
+        nav a:hover {
+            color: var(--primary)
+        }
+
+        .theme-toggle {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: #fff
+        }
+
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            background: var(--bg-card)
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 32px
+        }
+    </style>
+
+    <!-- Full CSS deferred -->
+    <link rel="stylesheet" href="{% load static %}{% static 'css/styles.min.css' %}" media="print"
+        onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    </noscript>
+
+    {% load static %}
+
+    <!-- Favicons -->
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo"><span class="logo-icon">✨</span>Headcanon Generator</a>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#generator">Generator</a></li>
+                    <li><a href="#what-is-headcanon">What is Headcanon?</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"
+                    title="Toggle dark/light mode">
+                    🌙
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo"><span class="logo-icon">✨</span>Headcanon Generator</a>
+                    <p>Free forever. Create unlimited headcanons for your favorite characters.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="{% url 'generator:about' %}">About</a></li>
+                            <li><a href="{% url 'generator:privacy' %}">Privacy Policy</a></li>
+                            <li><a href="{% url 'generator:terms' %}">Terms of Service</a></li>
+                            <li><a href="{% url 'generator:contact' %}">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#generator">Headcanon Generator</a></li>
+                            <li><a href="#what-is-headcanon">What is a Headcanon?</a></li>
+                            <li><a href="#examples">Headcanon Examples</a></li>
+                            <li><a href="#faq">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Headcanon Generator. Created by Faisal Ahmad. Free for personal use.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.min.js' %}" defer></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+
+</html>

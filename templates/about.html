@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}About - Headcanon Generator{% endblock %}
+{% block description %}Learn about Headcanon Generator, our mission to help fans create creative character headcanons,
+and the team behind this free tool.{% endblock %}
+{% block canonical %}/about/{% endblock %}
+
+{% block content %}
+<section class="legal-page">
+    <div class="container">
+        <h1>About Headcanon Generator</h1>
+        <div class="legal-content">
+            <h2>Our Mission</h2>
+            <p>Headcanon Generator was created with a simple goal: to help fans everywhere explore new dimensions of
+                their favorite characters. We believe that creativity should be accessible to everyone, which is why our
+                tool is completely free and always will be.</p>
+
+            <h2>Who Built This</h2>
+            <p>Headcanon Generator was created by <strong>Faisal Ahmad</strong>, a passionate developer and longtime fan
+                who understands the joy of fandom creativity. As a fanfiction reader and community member, Faisal
+                noticed a gap in free, high-quality creative tools for fans. This generator was built to be something
+                fans would actually use—and now it's being shared with everyone.</p>
+            <p>For questions or feedback, you can reach out at: <a
+                    href="mailto:faisalbashir353@gmail.com">faisalbashir353@gmail.com</a></p>
+
+            <h2>Why We Built It</h2>
+            <p>We've spent countless hours in fandom communities, reading fanfiction, creating fan art, and
+                participating in roleplay. We know how powerful a single creative spark can be—how one headcanon can
+                inspire an entire story, a piece of art, or a deep discussion with fellow fans. This tool exists to
+                provide those sparks whenever you need them.</p>
+
+            <h2>What We Do</h2>
+            <p>Our headcanon generator helps writers, artists, roleplayers, and fans create unique character
+                interpretations. Whether you're looking for inspiration for your next fanfiction, developing a roleplay
+                character, or just having fun imagining your favorite characters in new ways, we're here to spark your
+                creativity.</p>
+
+            <h2>Why Headcanons Matter</h2>
+            <p>Headcanons are more than just fun fan theories—they're a form of creative expression that allows fans to
+                connect with stories on a deeper level. They help us see ourselves in our favorite characters, fill in
+                the gaps left by creators, and build communities around shared interpretations.</p>
+
+            <h2>Our Commitment</h2>
+            <ul>
+                <li><strong>Free Forever:</strong> We will never charge for our core generator functionality.</li>
+                <li><strong>Privacy First:</strong> We don't store your data or track your headcanons.</li>
+                <li><strong>Safe Content:</strong> All generated content is appropriate for general audiences.</li>
+                <li><strong>Continuous Improvement:</strong> We regularly update our templates to keep content fresh.
+                </li>
+            </ul>
+
+            <h2>Contact Us</h2>
+            <p>Have questions, feedback, or suggestions? We'd love to hear from you! Visit our <a
+                    href="{% url 'generator:contact' %}">Contact page</a> to get in touch.</p>
+
+            <p class="mt-4"><a href="{% url 'generator:index' %}">← Back to Headcanon Generator</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}

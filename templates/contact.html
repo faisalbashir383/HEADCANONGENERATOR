@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - Headcanon Generator{% endblock %}
+{% block description %}Contact the Headcanon Generator team. We'd love to hear your feedback, suggestions, or
+questions.{% endblock %}
+{% block canonical %}/contact/{% endblock %}
+
+{% block content %}
+<section class="legal-page">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <div class="legal-content">
+            <p>We'd love to hear from you! Whether you have feedback, suggestions, questions, or just want to say hello,
+                feel free to reach out.</p>
+
+            <h2>Get in Touch</h2>
+            <p>The best way to reach us is via email:</p>
+            <p><strong>Email:</strong> <a
+                    href="mailto:contact@headcanongenerator.world">contact@headcanongenerator.world</a></p>
+
+            <h2>Feedback & Suggestions</h2>
+            <p>We're always looking to improve Headcanon Generator! If you have ideas for new features, tone options, or
+                template suggestions, we'd love to hear them.</p>
+
+            <h2>Report Issues</h2>
+            <p>Found a bug or experiencing technical issues? Please let us know with as much detail as possible,
+                including:</p>
+            <ul>
+                <li>What you were trying to do</li>
+                <li>What happened instead</li>
+                <li>Your browser and device type</li>
+            </ul>
+
+            <h2>Business Inquiries</h2>
+            <p>For business-related inquiries, partnerships, or advertising questions, please email us with "Business
+                Inquiry" in the subject line.</p>
+
+            <h2>Response Time</h2>
+            <p>We aim to respond to all inquiries within 48-72 hours during business days. Thank you for your patience!
+            </p>
+
+            <p class="mt-4"><a href="{% url 'generator:index' %}">← Back to Headcanon Generator</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}

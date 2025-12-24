@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Privacy Policy - Headcanon Generator{% endblock %}
+{% block description %}Privacy Policy for Headcanon Generator. Learn how we protect your privacy and handle your data.
+{% endblock %}
+{% block canonical %}/privacy/{% endblock %}
+
+{% block content %}
+<section class="legal-page">
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <div class="legal-content">
+            <p><strong>Last Updated: December 2024</strong></p>
+
+            <p>Headcanon Generator ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy
+                explains how we collect, use, and safeguard your information when you use our website at
+                headcanongenerator.world.</p>
+
+            <h2>Information We Collect</h2>
+            <p><strong>Automatically Collected Information:</strong> When you visit our website, our servers may
+                automatically log standard information, including:</p>
+            <ul>
+                <li>IP address</li>
+                <li>Browser type and version</li>
+                <li>Pages visited and time spent</li>
+                <li>Referring website</li>
+            </ul>
+
+            <p><strong>User-Provided Information:</strong> The character names, fandoms, and tones you enter into our
+                generator are processed in real-time to generate headcanons. <strong>We do not store this
+                    information.</strong> Once the headcanon is generated and displayed, the input data is discarded.
+            </p>
+
+            <h2>How We Use Information</h2>
+            <p>We use automatically collected information to:</p>
+            <ul>
+                <li>Maintain and improve our website</li>
+                <li>Analyze usage patterns to enhance user experience</li>
+                <li>Detect and prevent technical issues or abuse</li>
+            </ul>
+
+            <h2>Third-Party Services</h2>
+            <p><strong>Google AdSense:</strong> We use Google AdSense to display advertisements. Google may use cookies
+                to serve ads based on your prior visits to our website or other websites. You can opt out of
+                personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank"
+                    rel="noopener">Google's Ads Settings</a>.</p>
+
+            <p><strong>Analytics:</strong> We may use third-party analytics services to understand how visitors interact
+                with our website. These services may collect information about your use of our website.</p>
+
+            <h2>Cookies</h2>
+            <p>Our website may use cookies to enhance your experience. Cookies are small text files stored on your
+                device. You can control cookies through your browser settings. Note that disabling cookies may affect
+                some features of our website.</p>
+
+            <h2>Data Security</h2>
+            <p>We implement appropriate security measures to protect against unauthorized access, alteration,
+                disclosure, or destruction of information. However, no method of transmission over the Internet is 100%
+                secure.</p>
+
+            <h2>Children's Privacy</h2>
+            <p>Our website is designed to be appropriate for users of all ages. We do not knowingly collect personal
+                information from children under 13. If you believe a child has provided us with personal information,
+                please contact us.</p>
+
+            <h2>Your Rights</h2>
+            <p>Depending on your location, you may have rights regarding your personal information, including:</p>
+            <ul>
+                <li>Access to your personal information</li>
+                <li>Correction of inaccurate information</li>
+                <li>Deletion of your information</li>
+                <li>Opt-out of data processing</li>
+            </ul>
+
+            <h2>Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new
+                Privacy Policy on this page and updating the "Last Updated" date.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have questions about this Privacy Policy, please <a href="{% url 'generator:contact' %}">contact
+                    us</a>.</p>
+
+            <p class="mt-4"><a href="{% url 'generator:index' %}">← Back to Headcanon Generator</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
