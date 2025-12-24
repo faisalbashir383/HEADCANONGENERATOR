@@ -16,14 +16,18 @@ ALLOWED_HOSTS = ['headcanongenerator.world', 'www.headcanongenerator.world', 'lo
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
+    'django.contrib.sessions',
     'django.contrib.staticfiles',
     'generator',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'generator.middleware.RateLimitMiddleware',
+    'generator.middleware.VisitorTrackingMiddleware',
 ]
 
 ROOT_URLCONF = 'headcanon_project.urls'
@@ -43,11 +47,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'headcanon_project.wsgi.application'
 
-# No database needed - using in-memory SQLite stub
+# Database for visitor tracking
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -62,6 +66,10 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Session settings
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 86400 * 30  # 30 days
 
 # Security settings for production
 if not DEBUG:
