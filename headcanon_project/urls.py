@@ -2,6 +2,7 @@
 URL configuration for headcanon_project.
 """
 
+from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
 
@@ -45,6 +46,7 @@ def sitemap_xml(request):
     return HttpResponse(content, content_type='application/xml')
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', include('generator.urls')),
     path('robots.txt', robots_txt, name='robots_txt'),
     path('sitemap.xml', sitemap_xml, name='sitemap_xml'),
