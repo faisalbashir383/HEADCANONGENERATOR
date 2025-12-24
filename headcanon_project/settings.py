@@ -5,14 +5,26 @@ Optimized for production with AdSense and SEO requirements.
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret-key-change-in-production')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'dev-secret-key-change-in-production')
 
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['headcanongenerator.world', 'www.headcanongenerator.world', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["*"]
+
+
+if os.getenv("env", "production") == "production":
+    DEBUG = False
+else:
+    DEBUG = True
+
+
+env_path = Path(BASE_DIR) / '.env'
+load_dotenv(dotenv_path=env_path)
+
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
