@@ -86,3 +86,33 @@ def terms(request):
 def contact(request):
     """Render the contact page."""
     return render(request, 'contact.html')
+
+
+def what_is_headcanon(request):
+    """Render the 'What is Headcanon?' page."""
+    return render(request, 'what-is-headcanon.html')
+
+
+def canon_vs_headcanon(request):
+    """Render the 'Canon vs Headcanon' page."""
+    return render(request, 'canon-vs-headcanon.html')
+
+
+def headcanon_examples(request):
+    """Render the 'Headcanon Examples' page."""
+    return render(request, 'headcanon-examples.html')
+
+
+def random_headcanon_generator(request):
+    """Render the 'Random Headcanon Generator' page."""
+    return render(request, 'random-headcanon-generator.html')
+
+
+def character_headcanon_generator(request):
+    """Render the 'Character Headcanon Generator' page."""
+    return render(request, 'character-headcanon-generator.html')
+
+
+def anime_headcanon_generator(request):
+    """Render the 'Anime Headcanon Generator' page."""
+    return render(request, 'anime-headcanon-generator.html')

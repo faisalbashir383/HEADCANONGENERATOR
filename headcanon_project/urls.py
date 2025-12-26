@@ -24,6 +24,36 @@ def sitemap_xml(request):
         <priority>1.0</priority>
     </url>
     <url>
+        <loc>https://headcanongenerator.world/what-is-headcanon/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://headcanongenerator.world/canon-vs-headcanon/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://headcanongenerator.world/headcanon-examples/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://headcanongenerator.world/random-headcanon-generator/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://headcanongenerator.world/character-headcanon-generator/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://headcanongenerator.world/anime-headcanon-generator/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://headcanongenerator.world/about/</loc>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>

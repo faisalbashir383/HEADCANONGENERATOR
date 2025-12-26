@@ -169,6 +169,96 @@
             max-width: 700px;
             margin: 0 auto 32px
         }
+
+        .cta-box-inline {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(129, 140, 248, 0.1) 100%);
+            border: 1px solid var(--primary-light);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 24px 0;
+        }
+
+        .cta-box-inline p {
+            margin: 0;
+            color: var(--text);
+        }
+
+        .cta-box-inline a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Hide empty ad containers */
+        .ad-container:empty {
+            display: none;
+        }
+
+        /* Article content page spacing */
+        .article-content h2 {
+            margin-top: 48px;
+            margin-bottom: 16px;
+        }
+
+        .article-content h3 {
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+
+        .article-content p {
+            margin-bottom: 16px;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin-bottom: 20px;
+        }
+
+        .content-page {
+            padding: 40px 0 60px;
+        }
+
+        /* Reduce section padding on homepage */
+        .content-section {
+            padding: 48px 0;
+        }
+
+        .content-section h2 {
+            margin-bottom: 24px;
+        }
+
+        /* Quick links grid spacing */
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .quick-link-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .quick-link-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .quick-link-card p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .link-btn {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .link-btn:hover {
+            text-decoration: underline;
+        }
     </style>
 
     <!-- Full CSS deferred -->
@@ -222,21 +312,32 @@
                 </div>
                 <div class="footer-links">
                     <div class="footer-col">
+                        <h4>Learn</h4>
+                        <ul>
+                            <li><a href="{% url 'generator:what_is_headcanon' %}">What is Headcanon?</a></li>
+                            <li><a href="{% url 'generator:headcanon_examples' %}">Headcanon Examples</a></li>
+                            <li><a href="{% url 'generator:canon_vs_headcanon' %}">Canon vs Headcanon</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Generators</h4>
+                        <ul>
+                            <li><a href="{% url 'generator:index' %}#generator">Headcanon Generator</a></li>
+                            <li><a href="{% url 'generator:random_headcanon_generator' %}">Random Headcanon
+                                    Generator</a></li>
+                            <li><a href="{% url 'generator:character_headcanon_generator' %}">Character Headcanon
+                                    Generator</a></li>
+                            <li><a href="{% url 'generator:anime_headcanon_generator' %}">Anime Headcanon Generator</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
                         <h4>Legal</h4>
                         <ul>
                             <li><a href="{% url 'generator:about' %}">About</a></li>
                             <li><a href="{% url 'generator:privacy' %}">Privacy Policy</a></li>
                             <li><a href="{% url 'generator:terms' %}">Terms of Service</a></li>
                             <li><a href="{% url 'generator:contact' %}">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#generator">Headcanon Generator</a></li>
-                            <li><a href="#what-is-headcanon">What is a Headcanon?</a></li>
-                            <li><a href="#examples">Headcanon Examples</a></li>
-                            <li><a href="#faq">FAQs</a></li>
                         </ul>
                     </div>
                 </div>
