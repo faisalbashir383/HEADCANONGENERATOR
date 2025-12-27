@@ -55,8 +55,8 @@
                     <div class="tone-selector">
                         {% for tone in tones %}
                         <label class="tone-option">
-                            <input type="radio" name="tone" value="{{ tone.value }}"
-                                   {% if tone.value == 'random' %}checked{% endif %}>
+                            <input type="radio" name="tone" value="{{ tone.value }}" {% if tone.value=='random'
+                                %}checked{% endif %}>
                             <span class="tone-card">
                                 <span class="tone-emoji">{{ tone.emoji }}</span>
                                 <span class="tone-label">{{ tone.label }}</span>
@@ -134,109 +134,101 @@
     <div class="container">
         <h2>Frequently Asked Questions</h2>
         <div class="faq-list">
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-btn-1">
-                    <span itemprop="name">Is this headcanon generator free forever?</span>
+                    <span>Is this headcanon generator free forever?</span>
                     <span class="faq-icon">+</span>
                 </button>
-                <div class="faq-answer" id="faq-answer-1" itemscope itemprop="acceptedAnswer"
-                    itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Yes, absolutely! Our headcanon generator is completely free and will remain free
+                <div class="faq-answer" id="faq-answer-1">
+                    <p>Yes, absolutely! Our headcanon generator is completely free and will remain free
                         forever. We believe creativity tools should be accessible to everyone. There are no hidden fees,
                         premium tiers, or limits on how many headcanons you can generate. Use it as much as you want,
                         whenever you want.</p>
                 </div>
             </div>
 
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-btn-2">
-                    <span itemprop="name">Can I use these headcanons for my fanfiction?</span>
+                    <span>Can I use these headcanons for my fanfiction?</span>
                     <span class="faq-icon">+</span>
                 </button>
-                <div class="faq-answer" id="faq-answer-2" itemscope itemprop="acceptedAnswer"
-                    itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Absolutely! You're free to use any headcanons generated here for your fanfiction,
+                <div class="faq-answer" id="faq-answer-2">
+                    <p>Absolutely! You're free to use any headcanons generated here for your fanfiction,
                         roleplay, fan art inspiration, social media posts, or any other creative project. No attribution
                         required. The headcanons you generate are yours to use however you like.</p>
                 </div>
             </div>
 
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-btn-3">
-                    <span itemprop="name">Is this an AI-powered headcanon generator?</span>
+                    <span>Is this an AI-powered headcanon generator?</span>
                     <span class="faq-icon">+</span>
                 </button>
-                <div class="faq-answer" id="faq-answer-3" itemscope itemprop="acceptedAnswer"
-                    itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Our generator uses a carefully curated template system rather than real-time AI
+                <div class="faq-answer" id="faq-answer-3">
+                    <p>Our generator uses a carefully curated template system rather than real-time AI
                         generation. We've crafted over 200 unique headcanon templates that are randomly combined and
                         personalized with your character's name. This approach ensures fast, consistent, and safe
                         outputs without the unpredictability of AI systems.</p>
                 </div>
             </div>
 
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-btn-4">
-                    <span itemprop="name">Is this headcanon generator safe for kids and teens?</span>
+                    <span>Is this headcanon generator safe for kids and teens?</span>
                     <span class="faq-icon">+</span>
                 </button>
-                <div class="faq-answer" id="faq-answer-4" itemscope itemprop="acceptedAnswer"
-                    itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Yes! All content generated is appropriate for general audiences. While the "Dark"
+                <div class="faq-answer" id="faq-answer-4">
+                    <p>Yes! All content generated is appropriate for general audiences. While the "Dark"
                         tone option includes angsty or mysterious themes, nothing explicit or inappropriate is ever
                         generated. Our templates are designed to be creative and engaging while remaining
                         family-friendly.</p>
                 </div>
             </div>
 
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5" id="faq-btn-5">
-                    <span itemprop="name">Do you store my data or character names?</span>
+                    <span>Do you store my data or character names?</span>
                     <span class="faq-icon">+</span>
                 </button>
-                <div class="faq-answer" id="faq-answer-5" itemscope itemprop="acceptedAnswer"
-                    itemtype="https://schema.org/Answer">
-                    <p itemprop="text">No, we don't store any personal data. Character names, fandom selections, and
+                <div class="faq-answer" id="faq-answer-5">
+                    <p>No, we don't store any personal data. Character names, fandom selections, and
                         generated headcanons are processed in real-time and immediately discarded. We don't have user
                         accounts, so there's nothing to track. Your privacy is fully protected.</p>
                 </div>
             </div>
 
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6" id="faq-btn-6">
-                    <span itemprop="name">Can I generate unlimited headcanons?</span>
+                    <span>Can I generate unlimited headcanons?</span>
                     <span class="faq-icon">+</span>
                 </button>
-                <div class="faq-answer" id="faq-answer-6" itemscope itemprop="acceptedAnswer"
-                    itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Yes! There are no daily limits, generation caps, or cooldowns. Click the generate
+                <div class="faq-answer" id="faq-answer-6">
+                    <p>Yes! There are no daily limits, generation caps, or cooldowns. Click the generate
                         button as many times as you want for as many different characters as you like. Our system is
                         designed to handle high volumes while keeping response times under 200 milliseconds.</p>
                 </div>
             </div>
 
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7" id="faq-btn-7">
-                    <span itemprop="name">What fandoms does this generator support?</span>
+                    <span>What fandoms does this generator support?</span>
                     <span class="faq-icon">+</span>
                 </button>
-                <div class="faq-answer" id="faq-answer-7" itemscope itemprop="acceptedAnswer"
-                    itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Our generator works with any fandom or original characters! Our templates are
+                <div class="faq-answer" id="faq-answer-7">
+                    <p>Our generator works with any fandom or original characters! Our templates are
                         designed to be fandom-neutral, meaning they apply equally well to anime characters, book
                         protagonists, movie heroes, video game characters, or your own original creations. We offer
                         category-specific additions for anime, books, movies, and games.</p>
                 </div>
             </div>
 
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div class="faq-item">
                 <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-8" id="faq-btn-8">
-                    <span itemprop="name">How can I share headcanons with my fandom friends?</span>
+                    <span>How can I share headcanons with my fandom friends?</span>
                     <span class="faq-icon">+</span>
                 </button>
-                <div class="faq-answer" id="faq-answer-8" itemscope itemprop="acceptedAnswer"
-                    itemtype="https://schema.org/Answer">
-                    <p itemprop="text">Use the copy button to copy all generated headcanons to your clipboard, then
+                <div class="faq-answer" id="faq-answer-8">
+                    <p>Use the copy button to copy all generated headcanons to your clipboard, then
                         paste them anywhere—Twitter/X, Tumblr, Discord, fan forums, or group chats. Format them however
                         you like and share the creativity with your community!</p>
                 </div>
