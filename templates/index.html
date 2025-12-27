@@ -55,8 +55,8 @@
                     <div class="tone-selector">
                         {% for tone in tones %}
                         <label class="tone-option">
-                            <input type="radio" name="tone" value="{{ tone.value }}" {% if tone.value=='random'
-                                %}checked{% endif %}>
+                            <input type="radio" name="tone" value="{{ tone.value }}"
+                                   {% if tone.value == 'random' %}checked{% endif %}>
                             <span class="tone-card">
                                 <span class="tone-emoji">{{ tone.emoji }}</span>
                                 <span class="tone-label">{{ tone.label }}</span>
