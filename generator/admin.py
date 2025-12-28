@@ -9,7 +9,7 @@ from .models import VisitorLog, PageView
 @admin.register(VisitorLog)
 class VisitorLogAdmin(admin.ModelAdmin):
     list_display = [
-        'ip_address', 'referrer',  'country', 'city', 'device_type',
+        'ip_address', 'referrer', 'landing_page',  'country', 'city', 'device_type',
         'browser', 'is_bot', 'total_visits', 'total_page_views', 'last_visit'
     ]
     list_filter = ['device_type', 'is_bot', 'is_mobile', 'country']
