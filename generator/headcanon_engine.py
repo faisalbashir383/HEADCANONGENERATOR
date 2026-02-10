@@ -350,6 +350,117 @@ def get_tone_options() -> List[dict]:
     ]
 
 
+# Ship/Relationship headcanon templates
+SHIP_TEMPLATES = {
+    'wholesome': [
+        "{character1} and {character2} have a secret handshake that took them months to perfect",
+        "{character1} always knows when {character2} needs a hug without being told",
+        "{character1} leaves little love notes in {character2}'s pockets and bags",
+        "{character1} and {character2} have matching phone wallpapers but pretend it's a coincidence",
+        "{character1} memorized {character2}'s coffee order on their second meeting",
+        "{character1} and {character2} share a playlist they add songs to when thinking of each other",
+        "{character1} always saves the last bite of their favorite food for {character2}",
+        "{character1} and {character2} have inside jokes nobody else understands",
+        "{character1} gets jealous when {character2} laughs at someone else's jokes",
+        "{character1} and {character2} finish each other's sentences constantly",
+        "{character1} always notices when {character2} gets a haircut first",
+        "{character1} and {character2} have a tradition of watching the sunrise together",
+        "{character1} keeps a folder of {character2}'s best photos on their phone",
+        "{character1} and {character2} have matching scars from an adventure gone wrong",
+        "{character1} unconsciously gravitates toward {character2} in group settings",
+    ],
+    'funny': [
+        "{character1} and {character2} have an ongoing prank war that's lasted years",
+        "{character1} roasts {character2} constantly but won't let anyone else do it",
+        "{character1} and {character2} argue about who falls asleep first (both claim the other does)",
+        "{character1} steals {character2}'s hoodies so often they've given up reclaiming them",
+        "{character1} and {character2} have a competition for who can embarrass the other more in public",
+        "{character1} sends {character2} ugly photos of themselves at 3am",
+        "{character1} and {character2} have different versions of how they met and both insist theirs is correct",
+        "{character1} knows exactly which buttons to push to annoy {character2} (and pushes them regularly)",
+        "{character1} and {character2} fight over the aux cord like their lives depend on it",
+        "{character1} has an entire camera roll of unflattering photos of {character2}",
+        "{character1} and {character2} have a running bet that neither remembers the stakes of anymore",
+        "{character1} finishes {character2}'s food without asking and acts innocent",
+        "{character1} and {character2} are competitive about everything, even deciding where to eat",
+        "{character1} mocks {character2}'s music taste but secretly adds their songs to their playlist",
+        "{character1} and {character2} have developed their own language of weird noises",
+    ],
+    'emotional': [
+        "{character1} can tell something is wrong with {character2} just from their texting patterns",
+        "{character1} would burn the world down for {character2} without hesitation",
+        "{character1} and {character2} have a 'if we're both single at 40' pact they joke about but secretly mean",
+        "{character1} still gets butterflies around {character2} after all this time",
+        "{character1} and {character2} have a song that makes them cry together",
+        "{character1} keeps every gift {character2} has ever given them, no matter how small",
+        "{character1} and {character2} have grown into better people because of each other",
+        "{character1} would wait a lifetime for {character2}, and {character2} knows it",
+        "{character1} and {character2} have a 'we'll get through this together' that has never failed",
+        "{character1} sees {character2}'s flaws and loves them anyway—maybe even because of them",
+        "{character1} and {character2} are each other's emergency contacts, metaphorically and literally",
+        "{character1} wrote their feelings for {character2} in a letter they never sent",
+        "{character1} and {character2} have survived things that would have broken them alone",
+        "{character1} trusts {character2} with secrets they've never told anyone else",
+        "{character1} and {character2} communicate entire conversations through eye contact",
+    ],
+    'dark': [
+        "{character1} and {character2} have a secret only they share—and will take to their graves",
+        "{character1} would lie, cheat, and steal for {character2} without a second thought",
+        "{character1} and {character2} are each other's alibis, no questions asked",
+        "{character1} knows exactly where {character2} would hide a body (and vice versa)",
+        "{character1} and {character2} have trust that was forged in a crisis",
+        "{character1} would choose {character2} over doing the 'right' thing every time",
+        "{character1} and {character2} have matching scars from protecting each other",
+        "{character1} has killed for {character2} and would do it again",
+        "{character1} and {character2} are toxic for everyone except each other",
+        "{character1} keeps a mental list of everyone who's ever wronged {character2}",
+        "{character1} and {character2} understand each other's darkness without judgment",
+        "{character1} is the only person {character2} can be truly vulnerable with",
+        "{character1} and {character2} have survived trauma that bonded them permanently",
+        "{character1} and {character2} are partners in crimes they'll never speak of",
+        "{character1} saw {character2} at their absolute worst and didn't flinch",
+    ],
+}
+
+
+def generate_ship_headcanons(
+    character1: str,
+    character2: str,
+    tone: str = 'random',
+    count: int = 4
+) -> List[str]:
+    """
+    Generate unique headcanons for a ship/pairing.
+
+    Args:
+        character1: First character's name
+        character2: Second character's name
+        tone: One of 'wholesome', 'funny', 'dark', 'emotional', or 'random'
+        count: Number of headcanons to generate (3-5)
+
+    Returns:
+        List of generated headcanon strings
+    """
+    count = max(3, min(5, count))
+
+    if tone == 'random':
+        available_templates = []
+        for tone_templates in SHIP_TEMPLATES.values():
+            available_templates.extend(tone_templates)
+    else:
+        available_templates = SHIP_TEMPLATES.get(tone, SHIP_TEMPLATES['wholesome']).copy()
+
+    random.shuffle(available_templates)
+    selected_templates = available_templates[:count]
+
+    headcanons = []
+    for template in selected_templates:
+        headcanon = template.format(character1=character1, character2=character2)
+        headcanons.append(headcanon)
+
+    return headcanons
+
+
 def get_popular_fandoms() -> List[str]:
     """Return list of popular fandoms for the dropdown."""
     return [

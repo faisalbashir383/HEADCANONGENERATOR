@@ -154,36 +154,6 @@
         }
     }
 
-    // Share functions
-    function getShareText() {
-        if (!characterOutput) return '';
-        const character = characterOutput.textContent;
-        const headcanons = Array.from(headcanonList.querySelectorAll('li'))
-            .slice(0, 2)
-            .map(li => '• ' + li.textContent)
-            .join('\n');
-        return `Headcanons for ${character}:\n\n${headcanons}\n\n🔗 Generate more: headcanongenerator.world`;
-    }
-
-    function shareTwitter() {
-        const text = encodeURIComponent(getShareText());
-        window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank', 'width=550,height=420');
-    }
-
-    function shareTumblr() {
-        if (!characterOutput) return;
-        const title = encodeURIComponent(`Headcanons for ${characterOutput.textContent}`);
-        const body = encodeURIComponent(Array.from(headcanonList.querySelectorAll('li')).map(li => '• ' + li.textContent).join('\n') + '\n\nGenerated at headcanongenerator.world');
-        window.open(`https://www.tumblr.com/widgets/share/tool?posttype=text&title=${title}&content=${body}&canonicalUrl=https://headcanongenerator.world`, '_blank');
-    }
-
-    function shareReddit() {
-        if (!characterOutput) return;
-        const title = encodeURIComponent(`Headcanons for ${characterOutput.textContent}`);
-        const text = encodeURIComponent(Array.from(headcanonList.querySelectorAll('li')).map(li => '• ' + li.textContent).join('\n') + '\n\nGenerated at headcanongenerator.world');
-        window.open(`https://www.reddit.com/submit?title=${title}&text=${text}`, '_blank');
-    }
-
     // Form submission handler
     function handleSubmit(e) {
         e.preventDefault();
@@ -235,15 +205,6 @@
         if (regenerateBtn) {
             regenerateBtn.addEventListener('click', regenerate);
         }
-
-        // Share buttons
-        const twitterShare = document.getElementById('twitter-share');
-        const tumblrShare = document.getElementById('tumblr-share');
-        const redditShare = document.getElementById('reddit-share');
-
-        if (twitterShare) twitterShare.addEventListener('click', shareTwitter);
-        if (tumblrShare) tumblrShare.addEventListener('click', shareTumblr);
-        if (redditShare) redditShare.addEventListener('click', shareReddit);
 
         initFAQ();
         initSmoothScroll();

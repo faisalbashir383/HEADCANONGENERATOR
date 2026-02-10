@@ -1,0 +1,379 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ship Headcanon Generator: Create Romantic & Friendship Headcanons{% endblock %}
+{% block description %}Generate creative headcanons for your favorite ships and pairings. Perfect for fanfiction, roleplay, and exploring character relationships. Free and instant.{% endblock %}
+{% block canonical %}/ship-headcanon-generator/{% endblock %}
+{% block og_title %}Ship Headcanon Generator: Create Romantic & Friendship Headcanons{% endblock %}
+{% block og_description %}Generate unique headcanons for your favorite ships and pairings. Perfect for fanfiction writers.{% endblock %}
+{% block og_url %}/ship-headcanon-generator/{% endblock %}
+{% block twitter_title %}Ship Headcanon Generator{% endblock %}
+{% block twitter_description %}Create unique headcanons for your favorite ships and character pairings.{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Ship Headcanon Generator</h1>
+        <p class="hero-subtitle">Generate unique headcanons for your favorite pairings. Explore romantic, platonic, and rival dynamics.</p>
+    </div>
+</section>
+
+<!-- Ship Generator Tool -->
+<section class="generator-section" id="generator">
+    <div class="container">
+        <div class="generator-card">
+            <h2 class="generator-title">💕 Generate Ship Headcanons</h2>
+            <form id="ship-generator-form" class="generator-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="character1">Character 1 <span class="required">*</span></label>
+                        <input type="text" id="character1" name="character1"
+                            placeholder="e.g., Harry Potter" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="character2">Character 2 <span class="required">*</span></label>
+                        <input type="text" id="character2" name="character2"
+                            placeholder="e.g., Draco Malfoy" required autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Choose a Tone</label>
+                    <div class="tone-selector">
+                        {% for tone in tones %}
+                        <label class="tone-option">
+                            <input type="radio" name="tone" value="{{ tone.value }}"
+                                   {% if tone.value == 'random' %}checked{% endif %}>
+                            <span class="tone-card">
+                                <span class="tone-emoji">{{ tone.emoji }}</span>
+                                <span class="tone-label">{{ tone.label }}</span>
+                                <span class="tone-desc">{{ tone.description }}</span>
+                            </span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <button type="submit" class="generate-btn" id="generate-btn">
+                    <span class="btn-text">💕 Generate Ship Headcanons</span>
+                    <span class="btn-loading" style="display: none;">Generating...</span>
+                </button>
+            </form>
+
+            <div id="output-container" class="output-container" style="display: none;">
+                <div class="output-header">
+                    <h3 id="output-title">Headcanons for <span id="ship-output"></span></h3>
+                    <div class="output-actions">
+                        <button type="button" class="action-btn copy-btn" id="copy-btn" title="Copy to clipboard">
+                            📋 Copy
+                        </button>
+                        <button type="button" class="action-btn regenerate-btn" id="regenerate-btn"
+                            title="Generate new headcanons">
+                            🔄 Generate Again
+                        </button>
+                    </div>
+                </div>
+                <ul id="headcanon-list" class="headcanon-list"></ul>
+
+                <!-- Share Buttons -->
+                <div class="share-section">
+                    <p class="share-prompt">💡 Love these headcanons? Share them!</p>
+                    <div class="share-buttons">
+                        <button type="button" class="share-btn twitter-share" id="twitter-share" title="Share on Twitter/X">
+                            𝕏 Twitter
+                        </button>
+                        <button type="button" class="share-btn tumblr-share" id="tumblr-share" title="Share on Tumblr">
+                            📝 Tumblr
+                        </button>
+                        <button type="button" class="share-btn reddit-share" id="reddit-share" title="Share on Reddit">
+                            🔺 Reddit
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Support Section -->
+                <div class="support-section">
+                    <p class="support-text">If you enjoy this generator, consider supporting the project!</p>
+                    <a href="https://buymeacoffee.com/faisalahmad" target="_blank" rel="noopener noreferrer"
+                        class="support-btn bmc-btn">
+                        ☕ Buy Me a Coffee
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="content-page">
+    <div class="container">
+        <article class="article-content">
+            <h2>Why Use a Ship Headcanon Generator?</h2>
+
+            <p>Ship headcanons explore the dynamics between two characters—whether romantic, platonic, or antagonistic. They're the heart of fanfiction, fan art, and fandom discussions. Our generator creates unique scenarios for your OTP (One True Pairing) or any character combination you want to explore.</p>
+
+            <h3>Perfect For:</h3>
+            <ul>
+                <li><strong>Fanfiction writers</strong> looking for relationship dynamics inspiration</li>
+                <li><strong>Roleplay partners</strong> developing character chemistry</li>
+                <li><strong>Fan artists</strong> seeking scene ideas to illustrate</li>
+                <li><strong>Shippers</strong> who want to explore their favorite pairings</li>
+                <li><strong>Anyone</strong> curious about how two characters would interact</li>
+            </ul>
+
+            <h2>Types of Ship Headcanons</h2>
+
+            <h3>Romantic Ships</h3>
+            <p>The classic OTP headcanons—how they met, their first date, their pet names, their quirks as a couple. These headcanons imagine the romantic "what ifs" between characters.</p>
+
+            <h3>Platonic Ships (Brotp)</h3>
+            <p>Best friend dynamics, found family, ride-or-die duos. Not every ship is romantic—sometimes the most powerful connections are platonic. Use our generator for any friendship pairing.</p>
+
+            <h3>Rivals to Lovers</h3>
+            <p>The tension, the banter, the slow burn. Rival dynamics are rich with headcanon potential. What happens when enemies have to work together? When rivals develop grudging respect?</p>
+
+            <h3>Crack Ships</h3>
+            <p>Characters who never interact in canon but would be hilarious together. The generator works for any pairing, no matter how unexpected!</p>
+
+            <div class="cta-box">
+                <h3>✨ Try Our Other Generators</h3>
+                <p>Looking for individual character headcanons? Check out our other tools!</p>
+                <a href="{% url 'generator:index' %}#generator" class="cta-button">Character Headcanon Generator</a>
+            </div>
+
+            <h2>Popular Ship Types by Fandom</h2>
+
+            <h3>Anime Ships</h3>
+            <p>From Naruto x Sasuke to Bakugo x Deku, anime fandoms are famous for passionate shipping. The long episode counts give fans plenty of moments to analyze and build upon.</p>
+
+            <h3>Book Ships</h3>
+            <p>From enemies-to-lovers fantasy romances to classic literature pairings, book ships benefit from internal monologue that shows us what characters really think about each other.</p>
+
+            <h3>Movie/TV Ships</h3>
+            <p>Whether canon or not, on-screen chemistry sparks countless ship headcanons. Limited screen time means fans fill in the gaps with rich relationship headcanons.</p>
+
+            <h3>Video Game Ships</h3>
+            <p>Player choice and branching narratives make video game ships especially personal. What happens in your playthrough is your canon.</p>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I use this for non-romantic ships?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! The generator works for any relationship dynamic—romantic, platonic, familial, or even rivals. The headcanons focus on the dynamic between two characters, which applies to any type of relationship.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What if my characters are from different fandoms?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Crossover ships are welcome! Enter any two character names and the generator will create headcanons for their dynamic. Crossover shipping is a proud fandom tradition.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I use these headcanons in my fanfiction?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! All generated headcanons are free to use in your fanfiction, roleplay, fan art, or any other creative project. No attribution required.</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Ship Headcanon Generator",
+    "description": "Free online tool to generate unique headcanons for character ships and pairings. Create romantic, platonic, and rivalry headcanons instantly.",
+    "url": "https://headcanongenerator.world/ship-headcanon-generator/",
+    "applicationCategory": "EntertainmentApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    }
+}
+</script>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+(function() {
+    'use strict';
+
+    const form = document.getElementById('ship-generator-form');
+    const generateBtn = document.getElementById('generate-btn');
+    const outputContainer = document.getElementById('output-container');
+    const headcanonList = document.getElementById('headcanon-list');
+    const shipOutput = document.getElementById('ship-output');
+    const copyBtn = document.getElementById('copy-btn');
+    const regenerateBtn = document.getElementById('regenerate-btn');
+
+    let lastRequest = null;
+    let isGenerating = false;
+    let currentHeadcanons = [];
+    let currentShip = '';
+
+    async function generateShipHeadcanons(char1, char2, tone) {
+        if (isGenerating) return;
+        isGenerating = true;
+
+        const btnText = generateBtn.querySelector('.btn-text');
+        const btnLoading = generateBtn.querySelector('.btn-loading');
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+        generateBtn.disabled = true;
+
+        try {
+            const response = await fetch('/api/generate-ship/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ character1: char1, character2: char2, tone: tone })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                currentHeadcanons = data.headcanons;
+                currentShip = `${data.character1} x ${data.character2}`;
+                displayHeadcanons(data.headcanons, currentShip);
+                lastRequest = { char1, char2, tone };
+            } else {
+                showError(data.error || 'Failed to generate headcanons');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showError('Network error. Please try again.');
+        } finally {
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            generateBtn.disabled = false;
+            isGenerating = false;
+        }
+    }
+
+    function displayHeadcanons(headcanons, shipName) {
+        headcanonList.innerHTML = '';
+        shipOutput.textContent = shipName;
+
+        headcanons.forEach((headcanon, index) => {
+            const li = document.createElement('li');
+            li.textContent = headcanon;
+            li.style.animationDelay = `${index * 0.1}s`;
+            li.classList.add('fade-in');
+            headcanonList.appendChild(li);
+        });
+
+        outputContainer.style.display = 'block';
+        outputContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function showError(message) {
+        headcanonList.innerHTML = `<li style="border-left-color: #ef4444;">${message}</li>`;
+        shipOutput.textContent = 'Error';
+        outputContainer.style.display = 'block';
+    }
+
+    async function copyHeadcanons() {
+        const headcanons = Array.from(headcanonList.querySelectorAll('li'))
+            .map(li => '• ' + li.textContent)
+            .join('\n');
+
+        const text = `Ship Headcanons for ${currentShip}:\n\n${headcanons}\n\n— Generated at headcanongenerator.world/ship-headcanon-generator/`;
+
+        try {
+            await navigator.clipboard.writeText(text);
+            copyBtn.innerHTML = '✓ Copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+                copyBtn.innerHTML = '📋 Copy';
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        } catch (err) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            copyBtn.innerHTML = '✓ Copied!';
+            setTimeout(() => { copyBtn.innerHTML = '📋 Copy'; }, 2000);
+        }
+    }
+
+    function getShareText() {
+        const headcanons = currentHeadcanons.slice(0, 2).map(h => '• ' + h).join('\n');
+        return `Ship Headcanons for ${currentShip}:\n\n${headcanons}\n\n🔗 Generate more: headcanongenerator.world/ship-headcanon-generator/`;
+    }
+
+    function shareTwitter() {
+        const text = encodeURIComponent(getShareText());
+        window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank', 'width=550,height=420');
+    }
+
+    function shareTumblr() {
+        const title = encodeURIComponent(`Ship Headcanons for ${currentShip}`);
+        const body = encodeURIComponent(currentHeadcanons.map(h => '• ' + h).join('\n') + '\n\nGenerated at headcanongenerator.world');
+        window.open(`https://www.tumblr.com/widgets/share/tool?posttype=text&title=${title}&content=${body}&canonicalUrl=https://headcanongenerator.world/ship-headcanon-generator/`, '_blank');
+    }
+
+    function shareReddit() {
+        const title = encodeURIComponent(`Ship Headcanons for ${currentShip}`);
+        const text = encodeURIComponent(currentHeadcanons.map(h => '• ' + h).join('\n') + '\n\nGenerated at headcanongenerator.world/ship-headcanon-generator/');
+        window.open(`https://www.reddit.com/submit?title=${title}&text=${text}`, '_blank');
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const char1 = document.getElementById('character1').value.trim();
+        const char2 = document.getElementById('character2').value.trim();
+        if (!char1 || !char2) return;
+
+        const toneRadio = document.querySelector('input[name="tone"]:checked');
+        const tone = toneRadio ? toneRadio.value : 'random';
+        generateShipHeadcanons(char1, char2, tone);
+    }
+
+    function regenerate() {
+        if (lastRequest) {
+            generateShipHeadcanons(lastRequest.char1, lastRequest.char2, lastRequest.tone);
+        }
+    }
+
+    // Initialize FAQ
+    document.querySelectorAll('.faq-item').forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        });
+    });
+
+    // Event listeners
+    form.addEventListener('submit', handleSubmit);
+    copyBtn.addEventListener('click', copyHeadcanons);
+    regenerateBtn.addEventListener('click', regenerate);
+    document.getElementById('twitter-share').addEventListener('click', shareTwitter);
+    document.getElementById('tumblr-share').addEventListener('click', shareTumblr);
+    document.getElementById('reddit-share').addEventListener('click', shareReddit);
+})();
+</script>
+{% endblock %}

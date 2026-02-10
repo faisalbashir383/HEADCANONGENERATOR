@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block canonical %}/{% endblock %}
+{% block og_url %}/{% endblock %}
+
 {% block content %}
 <!-- Section 1: Hero -->
 <section class="hero" id="top">
@@ -16,7 +19,7 @@
     <div class="container">
         <ul class="toc-list">
             <li><a href="#generator">🎲 Generator</a></li>
-            <li><a href="#learn-more">📚 Learn More</a></li>
+            <li><a href="#learn-more">📖 About Headcanons</a></li>
             <li><a href="#faq">❓ FAQ</a></li>
         </ul>
     </div>
@@ -87,7 +90,22 @@
                     </div>
                 </div>
                 <ul id="headcanon-list" class="headcanon-list"></ul>
-                <p class="share-prompt">💡 Love these headcanons? Share them with your fandom friends!</p>
+
+                <!-- Share Buttons -->
+                <div class="share-section">
+                    <p class="share-prompt">💡 Love these headcanons? Share them!</p>
+                    <div class="share-buttons">
+                        <button type="button" class="share-btn twitter-share" id="twitter-share" title="Share on Twitter/X">
+                            𝕏 Twitter
+                        </button>
+                        <button type="button" class="share-btn tumblr-share" id="tumblr-share" title="Share on Tumblr">
+                            📝 Tumblr
+                        </button>
+                        <button type="button" class="share-btn reddit-share" id="reddit-share" title="Share on Reddit">
+                            🔺 Reddit
+                        </button>
+                    </div>
+                </div>
 
                 <!-- Support Section -->
                 <div class="support-section">
@@ -103,39 +121,48 @@
     </div>
 </section>
 
-<!-- Quick Links Section: Brief summaries with links to full guides -->
+<!-- SEO Content Section -->
 <section class="content-section" id="learn-more">
     <div class="container">
-        <h2>Learn About Headcanons</h2>
-        <div class="quick-links-grid">
-            <div class="quick-link-card">
-                <h3>📖 What Is a Headcanon?</h3>
-                <p>A headcanon is a fan's personal interpretation about a character or story that isn't confirmed in
-                    canon. Learn why headcanons matter to fandom communities and how to create your own.</p>
-                <a href="{% url 'generator:what_is_headcanon' %}" class="link-btn">Read the full guide →</a>
-            </div>
+        <article class="article-content">
+            <h2>What Is a Headcanon?</h2>
+            <p>A <strong>headcanon</strong> is a fan's personal interpretation or belief about a fictional character, story, or universe that isn't explicitly confirmed in the original source material. The term combines "head" (your imagination) with "canon" (official story facts), creating ideas that feel true to you even without official confirmation.</p>
 
-            <div class="quick-link-card">
-                <h3>⚖️ Canon vs Headcanon</h3>
-                <p>Understanding the difference between official story lore and personal fan interpretations. Learn when
-                    each matters and how they coexist in healthy fan communities.</p>
-                <a href="{% url 'generator:canon_vs_headcanon' %}" class="link-btn">Explore the differences →</a>
-            </div>
+            <p>Headcanons fill the gaps that creators leave unexplored. What does your favorite character do on a lazy Sunday? What's their biggest fear? What embarrassing habit do they hide from everyone? These personal interpretations make characters feel more real and three-dimensional, which is why fans across every fandom create and share them.</p>
 
-            <div class="quick-link-card">
-                <h3>💡 Headcanon Examples</h3>
-                <p>Browse 50+ creative headcanon ideas organized by tone and fandom type. Perfect for fanfiction
-                    inspiration, roleplay, or sparking your own character interpretations.</p>
-                <a href="{% url 'generator:headcanon_examples' %}" class="link-btn">See examples →</a>
-            </div>
+            <h2>How to Use This Headcanon Generator</h2>
+            <p>Our free headcanon generator creates unique character interpretations instantly. Simply enter any character name—whether from anime, books, movies, TV shows, video games, or your own original creations—and choose a tone that matches what you're looking for.</p>
 
-            <div class="quick-link-card">
-                <h3>🎌 Anime Headcanons</h3>
-                <p>Generate creative headcanons specifically for anime characters. Perfect for shonen, slice-of-life,
-                    isekai, and any anime fandom you love.</p>
-                <a href="{% url 'generator:anime_headcanon_generator' %}" class="link-btn">Try anime generator →</a>
-            </div>
-        </div>
+            <p>The generator offers five distinct tones to match your creative needs:</p>
+            <ul>
+                <li><strong>Wholesome</strong> — Heartwarming headcanons about comfort habits, caring gestures, and sweet personality traits</li>
+                <li><strong>Funny</strong> — Quirky, comedic headcanons featuring embarrassing habits and humorous character quirks</li>
+                <li><strong>Dark</strong> — Angsty, mysterious headcanons exploring trauma, survival instincts, and hidden depths</li>
+                <li><strong>Emotional</strong> — Deep, meaningful headcanons about love, loss, memory, and connection</li>
+                <li><strong>Random</strong> — A mix of all tones for maximum variety and surprise</li>
+            </ul>
+
+            <h2>Why Use a Headcanon Generator?</h2>
+            <p>Whether you're a fanfiction writer looking for character development ideas, a roleplayer building a character's backstory, or a fan who simply loves imagining new facets of beloved characters, a headcanon generator sparks creativity when you need inspiration most.</p>
+
+            <p>Our generator contains over 200 carefully crafted headcanon templates covering personality traits, daily habits, hidden talents, emotional depths, relationship dynamics, and quirky behaviors. Each generation produces four unique headcanons personalized with your character's name, giving you fresh ideas every time you click.</p>
+
+            <h2>Popular Uses for Headcanons</h2>
+            <p><strong>Fanfiction writing</strong> is one of the most common uses for headcanons. Writers use them to develop consistent characterization that goes beyond canon, adding depth to their stories with specific habits, preferences, and emotional responses that feel authentic to the character.</p>
+
+            <p><strong>Roleplay</strong> communities rely heavily on headcanons to flesh out characters for text-based or live roleplay. Having a library of small details—like how a character takes their coffee or what makes them laugh—makes improvisation easier and more immersive.</p>
+
+            <p><strong>Fan art inspiration</strong> often comes from headcanons. Artists illustrate scenarios that canon never showed—characters in everyday situations, displaying personality quirks, or interacting in ways fans imagine but never see on screen.</p>
+
+            <p><strong>Fandom discussion</strong> thrives on headcanon sharing. Posting a headcanon on Tumblr, Twitter, Reddit, or Discord and watching others respond with "this is now canon to me" creates community and connection between fans who see characters the same way.</p>
+
+            <h2>Headcanons for Any Fandom</h2>
+            <p>This generator works with characters from any source. Generate headcanons for anime characters like Naruto, Deku, or Levi. Create interpretations for book characters like Hermione, Percy Jackson, or Kaz Brekker. Explore movie and TV characters from Marvel, Star Wars, Stranger Things, or Game of Thrones. The templates are designed to be universal, applying equally well to any character you love.</p>
+
+            <p>You can also use this generator for <strong>original characters (OCs)</strong>. If you're developing your own characters for stories, games, or roleplay, generating headcanons can reveal personality aspects you hadn't considered and make your creations feel more alive.</p>
+
+            <p>Looking for relationship headcanons? Try our <a href="{% url 'generator:ship_headcanon_generator' %}">Ship Headcanon Generator</a> for pairings and dynamics between two characters. Want to dive deeper into headcanon culture? Read our complete guide on <a href="{% url 'generator:what_is_headcanon' %}">what headcanons are</a> or browse <a href="{% url 'generator:headcanon_examples' %}">50+ headcanon examples</a> for inspiration.</p>
+        </article>
     </div>
 </section>
 

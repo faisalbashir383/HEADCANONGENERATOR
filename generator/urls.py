@@ -21,4 +21,6 @@ urlpatterns = [
     path('random-headcanon-generator/', views.random_headcanon_generator, name='random_headcanon_generator'),
     path('character-headcanon-generator/', views.character_headcanon_generator, name='character_headcanon_generator'),
     path('anime-headcanon-generator/', views.anime_headcanon_generator, name='anime_headcanon_generator'),
+    path('ship-headcanon-generator/', views.ship_headcanon_generator, name='ship_headcanon_generator'),
+    path('api/generate-ship/', views.generate_ship, name='generate_ship'),
 ]

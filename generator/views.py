@@ -8,7 +8,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 
-from .headcanon_engine import generate_headcanons, get_tone_options, get_popular_fandoms
+from .headcanon_engine import generate_headcanons, generate_ship_headcanons, get_tone_options, get_popular_fandoms
 
 
 def index(request):
@@ -116,3 +116,60 @@ def character_headcanon_generator(request):
 def anime_headcanon_generator(request):
     """Render the 'Anime Headcanon Generator' page."""
     return render(request, 'anime-headcanon-generator.html')
+
+
+def ship_headcanon_generator(request):
+    """Render the 'Ship Headcanon Generator' page."""
+    context = {
+        'tones': get_tone_options(),
+        'fandoms': get_popular_fandoms(),
+    }
+    return render(request, 'ship-headcanon-generator.html', context)
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def generate_ship(request):
+    """API endpoint to generate ship/pairing headcanons."""
+    try:
+        data = json.loads(request.body)
+        character1 = data.get('character1', '').strip()
+        character2 = data.get('character2', '').strip()
+
+        if not character1 or not character2:
+            return JsonResponse({
+                'success': False,
+                'error': 'Both character names are required'
+            }, status=400)
+
+        tone = data.get('tone', 'random').lower()
+
+        valid_tones = ['wholesome', 'funny', 'dark', 'emotional', 'random']
+        if tone not in valid_tones:
+            tone = 'random'
+
+        headcanons = generate_ship_headcanons(
+            character1=character1,
+            character2=character2,
+            tone=tone,
+            count=4
+        )
+
+        return JsonResponse({
+            'success': True,
+            'headcanons': headcanons,
+            'character1': character1,
+            'character2': character2,
+            'tone': tone
+        })
+
+    except json.JSONDecodeError:
+        return JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON data'
+        }, status=400)
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': 'An error occurred while generating headcanons'
+        }, status=500)

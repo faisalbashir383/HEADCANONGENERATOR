@@ -295,6 +295,65 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(255, 221, 0, 0.4);
         }
+
+        /* Share Buttons */
+        .share-section {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .twitter-share {
+            background: #000;
+            color: #fff;
+        }
+
+        .twitter-share:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .tumblr-share {
+            background: #36465d;
+            color: #fff;
+        }
+
+        .tumblr-share:hover {
+            background: #4a5f7a;
+            transform: translateY(-2px);
+        }
+
+        .reddit-share {
+            background: #ff4500;
+            color: #fff;
+        }
+
+        .reddit-share:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+        }
     </style>
 
     <!-- Full CSS deferred -->
@@ -322,10 +381,10 @@
             <a href="/" class="logo"><span class="logo-icon">✨</span>Headcanon Generator</a>
             <div class="nav-right">
                 <ul>
-                    <li><a href="#generator">Generator</a></li>
-                    <li><a href="#what-is-headcanon">What is Headcanon?</a></li>
-                    <li><a href="#examples">Examples</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="/#generator">Generator</a></li>
+                    <li><a href="{% url 'generator:what_is_headcanon' %}">What is Headcanon?</a></li>
+                    <li><a href="{% url 'generator:headcanon_examples' %}">Examples</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
                 </ul>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"
                     title="Toggle dark/light mode">
@@ -363,8 +422,8 @@
                                     Generator</a></li>
                             <li><a href="{% url 'generator:character_headcanon_generator' %}">Character Headcanon
                                     Generator</a></li>
-                            <li><a href="{% url 'generator:anime_headcanon_generator' %}">Anime Headcanon Generator</a>
-                            </li>
+                            <li><a href="{% url 'generator:anime_headcanon_generator' %}">Anime Headcanon Generator</a></li>
+                            <li><a href="{% url 'generator:ship_headcanon_generator' %}">Ship Headcanon Generator</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
@@ -379,7 +438,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Headcanon Generator. Created by Faisal Ahmad. Free for personal use.</p>
+                <p>&copy; 2024-{% now "Y" %} Headcanon Generator. Created by Faisal Ahmad. Free for personal use.</p>
             </div>
         </div>
     </footer>
