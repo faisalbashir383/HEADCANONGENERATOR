@@ -188,6 +188,155 @@ nav a:hover {
     opacity: 0.9;
 }
 
+.last-updated {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    opacity: 0.8;
+}
+
+.last-updated .author-link {
+    color: var(--primary-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.last-updated .author-link:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+    margin-bottom: 20px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+.breadcrumb-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    list-style: none;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-list li {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-list a {
+    color: var(--primary-light);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 2px 0;
+}
+
+.breadcrumb-list a:hover {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: var(--text-muted);
+    opacity: 0.4;
+    margin: 0 8px;
+    font-size: 0.75rem;
+}
+
+.breadcrumb-list li[aria-current="page"] {
+    color: var(--text);
+    font-weight: 500;
+}
+
+/* Trust Links Section */
+.trust-links-section {
+    text-align: center;
+    padding: 24px;
+    margin-top: 32px;
+    border-top: 1px solid var(--border);
+}
+
+.trust-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.trust-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.trust-links a {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.trust-links a:hover {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+.trust-separator {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+/* Author Link in Content */
+.author-link {
+    color: var(--primary-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.author-link:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* About Creator Box - EEAT Signal */
+.about-creator-box {
+    background: linear-gradient(135deg, var(--bg-input) 0%, var(--bg-card) 100%);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+    margin: 32px 0;
+}
+
+.about-creator-box h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.about-creator-box p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.about-creator-box p:last-child {
+    margin-bottom: 0;
+}
+
 /* Generator Section */
 .generator-section {
     padding: 40px 0 60px;

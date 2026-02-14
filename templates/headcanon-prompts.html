@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}50 Headcanon Prompts for Writers: Spark Your Creativity{% endblock %}
+{% block description %}Discover 50 creative headcanon prompts organized by tone. Perfect for fanfiction writers, roleplayers, and fans looking for character inspiration.{% endblock %}
+{% block canonical %}/headcanon-prompts/{% endblock %}
+{% block og_title %}50 Headcanon Prompts for Writers: Spark Your Creativity{% endblock %}
+{% block og_description %}Creative headcanon prompts for every mood—funny, emotional, dark, romantic, and slice-of-life.{% endblock %}
+{% block og_url %}/headcanon-prompts/{% endblock %}
+{% block twitter_title %}50 Headcanon Prompts for Writers{% endblock %}
+{% block twitter_description %}Spark your creativity with these headcanon prompts organized by tone and theme.{% endblock %}
+
+{% block content %}
+<section class="content-page">
+    <div class="container">
+        <article class="article-content">
+            <h1>50 Headcanon Prompts for Writers: Spark Your Creativity</h1>
+
+            <p class="article-intro">Writer's block doesn't care about your deadline. Whether you're staring at a blank fanfiction document, trying to flesh out a roleplay character, or just want to think deeper about someone you love from your favorite show—sometimes you need a spark. That's where prompts come in.</p>
+
+            <p>These aren't your typical "what's their favorite color" character questionnaires. These are headcanon prompts designed to make you think, to reveal something unexpected about your character, and to give you material that actually matters for storytelling.</p>
+
+            <p>I've organized them by tone so you can jump straight to what you need. Bookmark this page—you'll come back to it.</p>
+
+            <!-- Key Takeaways Box -->
+            <div class="highlight-box">
+                <h3>How to Use These Prompts</h3>
+                <ul>
+                    <li>Pick a character you want to develop</li>
+                    <li>Choose prompts that match your current project's tone</li>
+                    <li>Don't just answer—explore <em>why</em> the answer is what it is</li>
+                    <li>Let one prompt lead to another; follow tangents</li>
+                    <li>Save your favorites for future writing sessions</li>
+                </ul>
+            </div>
+
+            <h2>Funny Headcanon Prompts</h2>
+
+            <p>Comedy reveals character. What embarrasses them? What hills will they die on? What makes them absolutely insufferable in the best way?</p>
+
+            <ol>
+                <li>What's the dumbest argument your character has ever refused to back down from?</li>
+                <li>What common skill are they embarrassingly bad at despite their competence elsewhere?</li>
+                <li>What's their most unhinged 3am behavior?</li>
+                <li>What mispronunciation or incorrect phrase do they use that nobody corrects anymore?</li>
+                <li>What's their personal beef with an inanimate object?</li>
+                <li>What childhood show/song/movie do they still unironically love?</li>
+                <li>What's their most controversial food opinion?</li>
+                <li>What completely useless talent are they inexplicably proud of?</li>
+                <li>What do they do when they think nobody's watching?</li>
+                <li>What would their internet search history reveal about them?</li>
+            </ol>
+
+            <p>The funniest headcanons come from specificity. "They're clumsy" is forgettable. "They've walked into the same glass door three times and now have a vendetta against the building" tells a story.</p>
+
+            <h2>Emotional Headcanon Prompts</h2>
+
+            <p>These dig deeper. They're the prompts that might make you feel something while writing.</p>
+
+            <ol start="11">
+                <li>What's the last thing they think about before falling asleep when they're sad?</li>
+                <li>What physical object would they grab first if their home was on fire?</li>
+                <li>What's a compliment that would actually make them cry?</li>
+                <li>What do they do when they miss someone but can't reach them?</li>
+                <li>What's the nicest thing anyone ever did for them that they still think about?</li>
+                <li>What would they never forgive themselves for?</li>
+                <li>What's the most vulnerable thing they've ever admitted out loud?</li>
+                <li>When was the last time they felt truly safe?</li>
+                <li>What memory do they return to when they need comfort?</li>
+                <li>What would finally make them ask for help?</li>
+            </ol>
+
+            <p>Emotional prompts work best when you resist the urge to resolve them. Let the longing stay longing. Let the wound stay tender. That's where the resonance lives.</p>
+
+            <h2>Dark Headcanon Prompts</h2>
+
+            <p>Handle these with care. Dark headcanons explore trauma, fear, survival, and the parts of characters that never make it into the main story. They should feel honest, not exploitative.</p>
+
+            <ol start="21">
+                <li>What survival skill do they have that they wish they didn't need?</li>
+                <li>What lie do they tell so often they've almost started believing it?</li>
+                <li>What's the worst thing they've done that they actually think was justified?</li>
+                <li>What do they see when they have nightmares?</li>
+                <li>What would make them become the villain?</li>
+                <li>What's the one thing they hope nobody ever finds out?</li>
+                <li>What trust did they lose that they never got back?</li>
+                <li>What's the cruelest thing they've ever said, and did they mean it?</li>
+                <li>What would they sacrifice everything for?</li>
+                <li>When did they stop expecting things to get better?</li>
+            </ol>
+
+            <p>The key to dark headcanons is restraint. Implication hits harder than explicit detail. A character who "learned to cry silently" tells us everything without telling us anything.</p>
+
+            <h2>Romantic Headcanon Prompts</h2>
+
+            <p>For ships, OTPs, and exploring how your character loves. These work for established relationships or pining, for healthy dynamics or messy ones.</p>
+
+            <ol start="31">
+                <li>How do they say "I love you" without using those words?</li>
+                <li>What small thing about someone makes them fall harder?</li>
+                <li>What's their love language, and do they know it?</li>
+                <li>What's the most romantic gesture they've imagined but never done?</li>
+                <li>What would make them realize they're in love?</li>
+                <li>What kind of partner do they think they deserve vs. want?</li>
+                <li>What's a dealbreaker they thought they had until they met someone who changed their mind?</li>
+                <li>How do they act when they're jealous?</li>
+                <li>What would they do for their person that they wouldn't do for anyone else?</li>
+                <li>What song reminds them of someone they love?</li>
+            </ol>
+
+            <p>Need headcanons specifically for pairings? Try our <a href="{% url 'generator:ship_headcanon_generator' %}">ship headcanon generator</a> for relationship dynamics between two characters.</p>
+
+            <h2>Slice-of-Life Headcanon Prompts</h2>
+
+            <p>The mundane stuff. The daily rituals, the quiet moments, the texture of ordinary life. These prompts make characters feel like real people who exist even when the plot isn't happening.</p>
+
+            <ol start="41">
+                <li>What's their morning routine on a day with nothing scheduled?</li>
+                <li>What do they order at a coffee shop, and do they ever try something new?</li>
+                <li>How do they spend sick days?</li>
+                <li>What's their relationship with their phone—do they respond immediately or forget for hours?</li>
+                <li>What does their living space reveal about them?</li>
+                <li>What comfort purchase would they make after a hard day?</li>
+                <li>How do they act in a group versus one-on-one?</li>
+                <li>What's their default "waiting room" thought spiral?</li>
+                <li>What hobby do they keep trying to start but never stick with?</li>
+                <li>What's the last thing they do before leaving the house?</li>
+            </ol>
+
+            <p>Slice-of-life headcanons are secretly worldbuilding. They tell us about the character's relationship with time, comfort, routine, and self. Don't underestimate them.</p>
+
+            <h2>Making Prompts Work Harder</h2>
+
+            <p>A prompt is just a starting point. The real magic happens when you push past the first answer.</p>
+
+            <h3>The "Why" Follow-Up</h3>
+            <p>For every answer, ask why. "They always sit facing the door." Why? "Because they need to see who's coming." Why? "Because once, they didn't, and..." Now you're writing backstory.</p>
+
+            <h3>The Contrast Approach</h3>
+            <p>Answer a funny prompt with a character who's usually serious. Answer an emotional prompt for your comic relief character. The unexpected combinations reveal the most.</p>
+
+            <h3>The Relationship Lens</h3>
+            <p>Answer each prompt twice: how the character sees themselves, and how someone close to them would answer. The gap between self-perception and reality is character development gold.</p>
+
+            <p>Want to see how these prompts translate into actual headcanon format? Browse our <a href="{% url 'generator:headcanon_examples' %}">headcanon examples</a> for inspiration.</p>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I use these prompts for original characters?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. These prompts work for any character—fandom or original. They're designed to be universal while still pushing toward specificity.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How many prompts should I answer per character?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Quality over quantity. Deeply exploring 5-10 prompts will give you more usable material than superficially answering all 50. Pick the ones that spark something.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What if my answer contradicts canon?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>That's fine. Headcanons are interpretations, not facts. As long as you're aware of where you're diverging and it serves your creative work, canon-divergent headcanons are completely valid.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I share my answers online?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Please do! Fandom thrives on shared headcanons. Post them on Tumblr, Twitter, Discord, or wherever your community lives. Seeing other people's answers to the same prompts is half the fun.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-box">
+                <h3>Generate Unlimited Headcanon Ideas</h3>
+                <p>Want even more inspiration? Our headcanon generator creates unique character interpretations instantly—just enter a name and go.</p>
+                <a href="{% url 'generator:index' %}#generator" class="cta-button">Try the Headcanon Generator</a>
+                <p class="cta-subtext">Free, unlimited, no signup required.</p>
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "50 Headcanon Prompts for Writers: Spark Your Creativity",
+    "description": "Creative headcanon prompts organized by tone for fanfiction writers, roleplayers, and fans. Includes funny, emotional, dark, romantic, and slice-of-life categories.",
+    "author": {
+        "@type": "Organization",
+        "name": "Headcanon Generator"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Headcanon Generator",
+        "url": "https://headcanongenerator.world"
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://headcanongenerator.world/headcanon-prompts/"
+    }
+}
+</script>
+{% endblock %}

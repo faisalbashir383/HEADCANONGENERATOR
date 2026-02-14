@@ -118,6 +118,36 @@ def anime_headcanon_generator(request):
     return render(request, 'anime-headcanon-generator.html')
 
 
+def how_to_write_headcanons(request):
+    """Render the 'How to Write Better Headcanons' guide."""
+    return render(request, 'how-to-write-headcanons.html')
+
+
+def headcanon_prompts(request):
+    """Render the '50 Headcanon Prompts' page."""
+    return render(request, 'headcanon-prompts.html')
+
+
+def funny_headcanon_ideas(request):
+    """Render the 'Funny Headcanon Ideas' page."""
+    return render(request, 'funny-headcanon-ideas.html')
+
+
+def emotional_headcanons_guide(request):
+    """Render the 'Emotional Headcanon Writing Guide' page."""
+    return render(request, 'emotional-headcanons-guide.html')
+
+
+def headcanon_vs_fanfiction(request):
+    """Render the 'Headcanon vs Fanfiction' page."""
+    return render(request, 'headcanon-vs-fanfiction.html')
+
+
+def fandom_culture_headcanons(request):
+    """Render the 'How Fandom Culture Shapes Headcanons' page."""
+    return render(request, 'fandom-culture-headcanons.html')
+
+
 def ship_headcanon_generator(request):
     """Render the 'Ship Headcanon Generator' page."""
     context = {
